@@ -31,8 +31,11 @@ stages:
               workingDir: "$(System.DefaultWorkingDirectory)"
             displayName: "Build Angular app"
 
-          - script:
-              ls
+          - task: Npm@1
+            inputs:
+              command: "custom"
+              customCommand: "ls"
+              workingDir: "$(System.DefaultWorkingDirectory)"
             displayName: "List Files"
 
           - script:
