@@ -31,12 +31,9 @@ stages:
               workingDir: "$(System.DefaultWorkingDirectory)"
             displayName: "Build Angular app"
 
-          - task: Npm@1
-            inputs:
-              command: "custom"
-              customCommand: "ls | ls"
-              workingDir: "$(System.DefaultWorkingDirectory)"
-            displayName: "List Files"
+          - script:
+              ls "$System.DefaultWorkingDirectory)\\dist\\angular-chess"
+            displayName: "List Contents"
 
           - script:
               xcopy "$System.DefaultWorkingDirectory)\\dist\\angular-chess" $(Build.ArtifactStagingDirectory)\\dist /E/H/C
