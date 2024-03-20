@@ -33,7 +33,7 @@
               "libraryName": "angular-chess",
               "libraryTarget": "umd"
             },
-            "deployUrl": "http://localhost:4200/"
+            "deployUrl": "https://pgsv2storageaccount.blob.core.windows.net/pgs-v2-angular-chess/"
           },
           "configurations": {
             "production": {
