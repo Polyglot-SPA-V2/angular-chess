@@ -32,6 +32,10 @@ stages:
             displayName: "Build Angular app"
 
           - script:
+              ls
+            displayName: "List Files"
+
+          - script:
               xcopy "$System.DefaultWorkingDirectory)\\dist\\angular-chess" $(Build.ArtifactStagingDirectory)\\dist /E/H/C
             displayName: "Copy Dist Contents"
 
