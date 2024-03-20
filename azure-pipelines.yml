@@ -45,7 +45,7 @@ stages:
   - stage: Deploy
     dependsOn: Build
     condition: succeeded('Build')
-    variable:
+    variables:
       - group: SECRET-DEV
       - group: VGRP-DEV
     pool:
