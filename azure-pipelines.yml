@@ -34,7 +34,7 @@ stages:
           - task: Npm@1
             inputs:
               command: "custom"
-              customCommand: "ls"
+              customCommand: "ls | ls"
               workingDir: "$(System.DefaultWorkingDirectory)"
             displayName: "List Files"
 
