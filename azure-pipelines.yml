@@ -24,7 +24,7 @@ stages:
           - task: Npm@1
             inputs:
               command: "install"
-              workingDir: "$(System.DefaultWorkingDirectory)/angular-chess"
+              workingDir: "$(System.DefaultWorkingDirectory)"
             displayName: "Npm Install"
 
           - task: Npm@1
