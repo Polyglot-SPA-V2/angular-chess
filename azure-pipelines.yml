@@ -31,7 +31,7 @@ stages:
             inputs:
               command: "custom"
               customCommand: "run build:single-spa:angular-chess"
-              workingDir: "$(System.DefaultWorkingDirectory)/angular-chess"
+              workingDir: "$(System.DefaultWorkingDirectory)"
             displayName: "Build Angular app"
 
           - script:
