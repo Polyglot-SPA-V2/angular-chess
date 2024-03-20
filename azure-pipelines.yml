@@ -33,7 +33,7 @@ stages:
 
           - script:
               mkdir $(Build.ArtifactStagingDirectory)\\dist
-              xcopy "$System.DefaultWorkingDirectory)\\angular-chess\\dist\\angular-chess" $(Build.ArtifactStagingDirectory)\\dist /E/H/C
+              xcopy "$System.DefaultWorkingDirectory)\\dist\\angular-chess" $(Build.ArtifactStagingDirectory)\\dist /E/H/C
             displayName: "Copy Dist Contents"
 
           - task: PublishBuildArtifacts@1
