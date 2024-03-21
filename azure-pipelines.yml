@@ -44,7 +44,8 @@ stages:
     condition: succeeded('Build')
     variables:
       - group: SECRET-DEV
-      - group: VGRP-PGS-V2-ANGULAR-CHESS
+      - group: VGRP-PGS-V2
+      - group: VGRP-ANGULAR-CHESS
     pool:
       vmImage: "windows-latest"
     jobs:
