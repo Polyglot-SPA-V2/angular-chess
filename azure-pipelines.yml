@@ -44,7 +44,7 @@ stages:
     condition: succeeded('Build')
     variables:
       - group: SECRET-DEV
-      - group: VGRP-DEV
+      - group: VGRP-PGS-V2-ANGULAR-CHESS
     pool:
       vmImage: "windows-latest"
     jobs:
@@ -62,5 +62,5 @@ stages:
                     scriptType: batch
                     scriptLocation: inlineScript
                     inlineScript: |
-                      az storage blob upload-batch --overwrite -d pgs-v2-angular-chess --account-name $(storageAccount) --account-key $(accountKey) -s "$(Agent.BuildDirectory)\\drop\\dist"
+                      az storage blob upload-batch --overwrite -d $(containerName) --account-name $(storageAccount) --account-key $(accountKey) -s "$(Agent.BuildDirectory)\\drop\\dist"
 
