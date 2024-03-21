@@ -9,7 +9,7 @@ stages:
       vmImage: "windows-latest"
     jobs:
       - job: Build
-        displayName: "Angular App Build"
+        displayName: "PGS-V2 Angular-Chess App Build"
         workspace:
           clean: all
         steps:
@@ -29,7 +29,7 @@ stages:
               command: "custom"
               customCommand: "run build:single-spa:angular-chess"
               workingDir: "$(System.DefaultWorkingDirectory)"
-            displayName: "Build Angular app"
+            displayName: "Build PGS-V2 Angular-Chess app"
 
           - script:
               mkdir $(Build.ArtifactStagingDirectory)\\dist |
@@ -56,7 +56,7 @@ stages:
             deploy:
               steps:
                 - task: AzureCLI@2
-                  displayName: "Deploy Angular App"
+                  displayName: "Deploy PGS-V2 Angular-Chess App"
                   inputs:
                     azureSubscription: $(azureSubscription)
                     scriptType: batch
