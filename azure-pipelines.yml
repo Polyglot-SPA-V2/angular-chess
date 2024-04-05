@@ -21,6 +21,7 @@ stages:
           - task: Npm@1
             inputs:
               command: "install"
+              customCommand: "install --force"
               workingDir: "$(System.DefaultWorkingDirectory)"
             displayName: "Npm Install"
 
