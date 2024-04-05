@@ -1,0 +1,51 @@
+<ng-template #content let-modal>
+  <div class="modal-mask">
+    <div class="modal-wrapper">
+      <div class="modal-container">
+        <div class="modal-header">
+          <slot name="header">
+            Advanced Config Options
+          </slot>
+        </div>
+        <div class="modal-body">
+          <slot name="body">
+            <div>
+              <label for="inputFEN" class="form-label">Input FEN</label>
+              <input type="text" class="form-control" name="fen" id="inputFEN" [(ngModel)]="fen"/>
+              <div id="fenHelp" class="form-text" aria-describedby="fenHelp" >If the FEN is invalid the field will be ignored.</div>
+            </div>
+            <div>
+              Pick Orientation
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="inputOrientation" id="inputRadioWhite" value="white" [(ngModel)]="color" checked/>
+                <label class="form-check-label" for="inputRadioWhite"> White </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="inputOrientation" id="inputRadioBlack" value="black" [(ngModel)]="color"/>
+                <label class="form-check-label" for="inputRadioBlack"> Black </label>
+              </div>
+            </div>
+            <div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" [(ngModel)]="selfPlay" id="inputSelfPlay"/>
+                <label class="form-check-label" for="inputSelfPlay">
+                  Check to make computer play itself.
+                </label>
+              </div>
+            </div>
+          </slot>
+        </div>
+        <div class="modal-footer">
+          <slot name="footer">
+            <button id="advancedConfigStartGameBtn" type="submit" (click)="advancedConfigStartGame()" class="btn btn-dark btn-sm">
+              OK
+            </button>
+            <button id="closeAdvancedConfigModalBtn" type="button" (click)="closeAdvancedConfigModal()" class="btn btn-dark btn-sm">
+              Cancel
+            </button>
+          </slot>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

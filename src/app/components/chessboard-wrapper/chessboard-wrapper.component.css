@@ -1,0 +1,10 @@
+
+#chessBoardBackground {
+  background-image: url("https://polyglot-spa-angular-chess.s3.us-east-2.amazonaws.com/angular-chess/assets/board-background.png");
+  /*background-image: url("http://localhost:5005/assets/board-background.png");*/
+}
+
+#chessBoardAngular {
+  max-width: 900px;
+  margin: auto;
+}

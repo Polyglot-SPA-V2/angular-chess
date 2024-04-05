@@ -1,0 +1,14 @@
+<header class="container-fluid" id="angular-secondary-header">
+  <div class="row p-2">
+    <div class="col-3">
+      <img class="w-100" alt="Angular logo" id="angularLogo" src="https://polyglot-spa-angular-chess.s3.us-east-2.amazonaws.com/angular-chess/assets/angular-logo.svg">
+    </div>
+    <div class="col-6 d-grid gap-2">
+      <button id="quickStartBtn" type="button" class="btn btn-light w-100 btn-sm" (click)="emitQuickStartGame()" [disabled]="disabled">Quick Start</button>
+      <button id="advancedConfigBtn" type="button" class="btn btn-light w-100 btn-sm" (click)="openAdvancedConfigModal()" [disabled]="disabled">Advanced Config</button>
+    </div>
+    <div class="col-3">
+      <img class="w-100" alt="Chess logo" id="chessLogo" src="https://polyglot-spa-angular-chess.s3.us-east-2.amazonaws.com/angular-chess/assets/Centaur.png">
+    </div>
+  </div>
+</header>
