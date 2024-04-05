@@ -1,5 +1,6 @@
 import { Component, ElementRef, ViewChild, OnInit } from '@angular/core';
 import { ChessStarterService } from '../../Services/chess-starter.service';
+import { ChessMoveService} from '../../Services/chess-move.service';
 import 'chessboard-element';
 import { Chess, validateFen } from 'chess.js';
 
@@ -10,7 +11,7 @@ import { Chess, validateFen } from 'chess.js';
 })
 export class ChessboardWrapperComponent implements OnInit {
   @ViewChild('chessboard') chessboard: ElementRef | undefined;
-  constructor(private chessStarterService: ChessStarterService) { }
+  constructor(private chessStarterService: ChessStarterService, private chessMoveService: ChessMoveService) { }
   game = new Chess();
   randomMoveInterval: string | number | undefined;
   draggablePieces = false;
@@ -70,18 +71,24 @@ export class ChessboardWrapperComponent implements OnInit {
       return;
     }
 
-    // @ts-ignore
-    const randomIdx = Math.floor(Math.random() * possibleMoves.length);
-    this.game.move(possibleMoves[randomIdx]);
-    // @ts-ignore
-    this.chessboard.nativeElement.setPosition(this.game.fen());
+    this.chessMoveService.getNextMove({gameFen: game.fen()})
+      .then((nextMove) => {
+        const [from, to] = Object.entries(nextMove)[0];
+        game.move({
+          from: from.toLowerCase(),
+          // @ts-ignore
+          to: to.toLowerCase(),
+        });
+        // @ts-ignore
+        this.chessboard.nativeElement.setPosition(this.game.fen());
+      });
   }
   ngOnInit(): void {
     this.chessStarterService.quickStartGame.subscribe(() => {
       this.draggablePieces = true;
       this.addEventListeners(this.game);
       // @ts-ignore
-      this.chessboard.nativeElement.start();
+      this.chessboard.nativeElement.start(false);
     });
     this.chessStarterService.advanceConfigStartGame.subscribe((data) => {
 
@@ -93,7 +100,7 @@ export class ChessboardWrapperComponent implements OnInit {
         this.game.load(data.fen);
       } else {
         // @ts-ignore
-        this.chessboard.nativeElement.start();
+        this.chessboard.nativeElement.start(false);
       }
       this.orientation = data.color;
       if (data.selfPlay) {
