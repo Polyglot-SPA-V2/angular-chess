@@ -21,7 +21,7 @@ stages:
           - task: Npm@1
             inputs:
               command: "custom"
-              customCommand: "install --force"
+              customCommand: "install --legacy-peer-deps"
               workingDir: "$(System.DefaultWorkingDirectory)"
             displayName: "Force Npm Install"
 
